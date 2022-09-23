@@ -5,27 +5,24 @@ class View(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
 
-        self.name = tk.StringVar()
-        self.hello_string = tk.StringVar()
-        self.hello_string.set("Hello World")
+        PRICE_largepizza = "15.99"
+        PRICE_mediumpizza = "12.99"
+        PRICE_smallpizza = "10.99"
 
-        name_label = ttk.Label(self, text="Name:")
-        name_entry = ttk.Entry(self, textvariable=self.name)
+        LABEL_largepizza = ttk.Label(self, text='Large Pizza | ' + PRICE_largepizza)
+        LABEL_largepizza.grid(row=0, column=0, sticky=tk.W)
+        BUTTON_addToCart_largepizza = ttk.Button(self, text="Add to Cart", command=self.addToCart)
+        BUTTON_addToCart_largepizza.grid(row=0, column=1, sticky=tk.E) 
 
-        ch_button = ttk.Button(self, text="Change", command=self.on_change)
+        LABEL_mediumpizza = ttk.Label(self, text='Medium Pizza | ' + PRICE_mediumpizza)
+        LABEL_mediumpizza.grid(row=1, column=0, sticky=tk.W)
+        BUTTON_addToCart_mediumpizza = ttk.Button(self, text="Add to Cart", command=self.addToCart)
+        BUTTON_addToCart_mediumpizza.grid(row=1, column=1, sticky=tk.E) 
 
-        hello_label = ttk.Label(self, textvariable=self.hello_string,
-                                font=("TkDefaultFont", 64), wraplength=600)
-        
-        name_label.grid(row=0, column=0, sticky=tk.W)
-        name_entry.grid(row=0, column=1, sticky=(tk.W + tk.E))
-        ch_button.grid(row=0, column=2, sticky=tk.E)
-        hello_label.grid(row=1, column=0, columnspan=3)
+        LABEL_smallpizza = ttk.Label(self, text='Small Pizza | ' + PRICE_smallpizza)
+        LABEL_smallpizza.grid(row=2, column=0, sticky=tk.W)
+        BUTTON_addToCart_smallpizza = ttk.Button(self, text="Add to Cart", command=self.addToCart)
+        BUTTON_addToCart_smallpizza.grid(row=2, column=1, sticky=tk.E) 
 
-        self.columnconfigure(1, weight=1)
-
-    def on_change(self):
-        if self.name.get().strip():
-            self.hello_string.set("Hello " + self.name.get())
-        else:
-            self.hello_string.set("Hello World")
+    def addToCart(self):
+        pass
